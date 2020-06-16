@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class="container">
+
+         <div id="messageserror" class="hide" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div>Invalid OTP ! Please enter again</div>
+          </div>
+            <div id="messages" class="hide" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <form id='OTPform' name='otpformval'>
+               <div class="form-group">
+                 <label for="exampleInputEmail1">OTP</label>
+                 <input type="number" class="form-control" name="verifyotp" aria-describedby="emailHelp">
+                 
+        <small id="emailHelp" class="form-text text-muted">Test OTP - 1923</small>
+               </div>
+               <button type="submit" class="btn btn-primary">Verify OTP</button>
+             </form>
+            </div>
+
+            <form id='form'>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Mobile Number</label>
+        <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your number with anyone else.</small>
+      </div>
+      <button type="submit" class="btn btn-primary">Send OTP</button>
+    </form>
+        </div>
+
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+        <script>
+$('#form').submit(function(e) {
+
+var phone = $("#exampleInputEmail1").val();
+console.log(phone);
+var phoneno = /^\d{10}$/;
+if (phone.match(phoneno)) {
+    $('#messages').removeClass('hide').addClass('alert alert-success alert-dismissible').slideDown().show();
+
+    e.preventDefault();
+} else {
+    alert("Please enter a correct Number");
+}
+
+});
+$('#OTPform').submit(function(e) {
+if (document.otpformval.verifyotp.value == "1923") {
+    alert("OTP Matched");
+} else {
+    $('#messageserror').removeClass('hide').addClass('alert alert-danger alert-dismissible').slideDown().show();
+
+    e.preventDefault();
+
+
+}
+});
+         
+        </script>
+
+    </body>
+</html>
